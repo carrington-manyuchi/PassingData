@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     
     
     @IBOutlet weak var emailText: UITextField!
-        @IBOutlet weak var passwordText: UITextField!
+    @IBOutlet weak var passwordText: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +20,12 @@ class ViewController: UIViewController {
     }
 
     @IBAction func buttonTapped(_ sender: UIButton) {
+        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "DataDetailsViewController") as? DataDetailsViewController else {
+            return
+        }
+        vc.email = emailText.text!
+        vc.password = passwordText.text!
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     
